@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Net Promoter Score Calculator</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Net Promoter Score Calculator">
+  <meta name="author" content="Joe Cuthbert">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Net Promoter Score Calculator</h1>
+    <h2>A shiny tool for scoring customer loyalty</h2>
+    <p>Joe Cuthbert<br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <p></br></p>
+
+<h1>Introduction to the NPS</h1>
+
+<p></br>
+The Net Promoter Score (NPS) is used in market research to measure customer loyalty.<br>
+</br>
+Customers are asked &#39;How likely is it that you would recommend this company to a friend or colleague?&#39; and answer on a scale of 0-10 where 0 = Extremely unlikely and 10 = Extremely likely.<br>
+</br>
+Those answering 0-6 are classified as detractors, those answering 7-8 as passives and those answering 9-10 as promoters.<br>
+</br>
+The subject of this presentation is to introduce a simple shiny app that calculates the NPS based on responses to this question and displays a bar chart of customer classifications.<br>
+</br>
+Further details about the NPS can be found at this wikipedia page.<br>
+</br>
+<a href="https://en.wikipedia.org/wiki/Net_Promoter">https://en.wikipedia.org/wiki/Net_Promoter</a></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <p></br></p>
+
+<h1>The NPS calculation in R</h1>
+
+<p></br>
+In R the NPS calculation can be reproduced with the following expression</p>
+
+<pre><code class="r">((promoters/respondents)-(detractors/respondents))*100
+</code></pre>
+
+<p></br>
+So an input of 750 respondents with 480 promoters and 150 detractors would result in an NPS score of 44.</p>
+
+<pre><code class="r">respondents &lt;- 750
+promoters &lt;- 480
+detractors &lt;- 150
+
+((promoters/respondents)-(detractors/respondents))*100
+</code></pre>
+
+<pre><code>## [1] 44
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <article data-timings="">
+    <p></br></p>
+
+<h1>What the app does</h1>
+
+<p></br>
+The shiny app requires 4 non negative numbers to be entered via numeric inputs.<br>
+</br>
+The 4 numbers are the number of detractors, the number of passives, the number of promoters and the overall number of respondents.<br>
+</br>
+Once the user has clicked submit, the app first checks that the input is valid by checking that the sum of detractors, passives and promoters is equal to the total number of respondents. If an acceptable input has not been received then a message reminding the user what is required is displayed.<br>
+</br>
+Once a valid input has been entered the NPS score is calculated and displayed to the user. A bar chart is also generated showing how the three customers types are distributed in the overall number of respondents.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p></br></p>
+
+<h1>In Conclusion</h1>
+
+<p></br>
+The NPS Calculator App can be used by market researchers to quickly grab an NPS score and to get a visual impression of how the customer types compare.<br>
+</br>
+The interface is simple and employs twitter&#39;s bootstrap framework for mobile compatibility.<br>
+</br>
+<img src="Screen.PNG" style="max-width:700px;border: 1px solid black;"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
